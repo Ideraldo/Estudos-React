@@ -3,7 +3,6 @@ import React from 'react'
 
 function gerarNumeros(qtde) {
     let numeros
-    numeros.fill(0[1, 60])
 
     return (
         <div>
