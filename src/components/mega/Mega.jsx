@@ -1,18 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
+import "./Mega.css"
 
+export default (props) => {
+    function gerarNumeroNaoContido(min, max, array) {
+        const aleatorio = parseInt(Math.random() * (max + 1 - min)) + min
+        return array.includes(aleatorio) ?
+            gerarNumeroNaoContido(min, max, array) :
+            aleatorio
+    }
 
-function gerarNumeros(qtde) {
-    let numeros
+    function gerarNumeros(qtde) {
+        const numeros = Array(qtde)
+            .fill(0)
+            .reduce((nums) => {
+                const novoNumero = gerarNumeroNaoContido(1, 60, nums)
+                return [...nums, novoNumero]
+            }, [])
+            .sort((n1, n2) => n1 - n2)
+
+        return numeros
+    }
+
+    const [qtde, setQtde] = useState(props.qtde || 6)
+    const numerosIniciais = Array(qtde).fill(0)
+    const [numeros, setNumeros] = useState(numerosIniciais)
 
     return (
-        <div>
-            <span>
-                Os números apostados são: {numeros}
-            </span>
+        <div className="Mega">
+            <h2>Numeros Mega</h2>
+            <h3>{numeros.join(' - ')}</h3>
+            <div>
+                <label>Quantidade de Números</label>
+                <input type="number" value={qtde} min="0" max="15" onChange={e => setQtde(+e.target.value)} />
+            </div>
+            <button onClick={_ => setNumeros(gerarNumeros(qtde))}>Gerar Numeros</button>
         </div>
     )
 }
-
-<button>Gerar Numero</button>
-
-export default gerarNumeros

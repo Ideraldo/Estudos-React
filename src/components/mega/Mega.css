@@ -1,0 +1,15 @@
+.Mega label {
+    margin-right: 10px;
+}
+
+.Mega input{
+    font-size: 1.4rem;
+    width: 50px;
+}
+
+
+.Mega h3 {
+    margin: 10px;
+    border-style:groove;
+    border-color: rgba(0, 0, 0, 0.288);
+}

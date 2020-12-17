@@ -1,0 +1,43 @@
+--------- MEGA.jsx ----------
+
+import React, { useState } from 'react'
+import Sorteio from "./Sorteio"
+
+function GerarNumeros(qtde) {
+
+    const [qtdNumeros, setQtdNumeros] = useState(0)
+
+    function quandoMudar(e) {
+        setQtdNumeros(e.target.value)
+    }
+    return (
+        <div>
+            <Sorteio qtd={this.state.qtdNumeros}></Sorteio>
+            Os números disponiveis para aposta são: {}
+            <button>Gerar Numeros</button>
+            <input id="qtdNumeros" type="number" value={qtdNumeros} min="0" max="6" onChange={quandoMudar}></input>
+        </div>
+    )
+}
+
+export default GerarNumeros
+
+----------- SORTEIO.jsx ----------------
+
+export default props => {
+    qtd: this.props
+    let listaNumeros = []
+
+    for (let i = 1; i < 61; i++) {
+        listaNumeros[i - 1] = i
+    }
+
+    const aleatorio = parseInt(Math.random() * (60 - 1)) + 1
+    console.log(aleatorio)
+
+    return (
+        <div>
+            AAA
+        </div>
+    )
+}
